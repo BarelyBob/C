@@ -1,19 +1,20 @@
-#include <ctype.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/07 13:25:34 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/07 13:26:29 by mpitot           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 int	ft_isalpha(int c)
 {
 	if (c >= 65 && c <= 90)
-		return (1024);
-	if (c >= 97 && c <= 122)
-		return (1024);
-	return (0);
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
 		return (1);
-	printf("%d\n%d", ft_isalpha(argv[1][0]), isalpha(argv[1][0]));
+	if (c >= 97 && c <= 122)
+		return (1);
 	return (0);
 }

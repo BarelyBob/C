@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/07 13:23:19 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/07 13:25:07 by mpitot           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 int	ft_checker(char c)
 {
 	if ((c >= 9 && c <= 13) || c == 32)
@@ -10,8 +22,8 @@ int	ft_checker(char c)
 int	ft_atoi(const char *nptr)
 {
 	unsigned int	i;
-	int	value;
-	int	sign;
+	int				value;
+	int				sign;
 
 	if (!nptr)
 		return (0);
@@ -26,7 +38,7 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	else if (nptr[i] == '+')
-		i++;	
+		i++;
 	while (ft_checker(nptr[i]) == 2)
 	{
 		value = value * 10 + nptr[i] - 48;
