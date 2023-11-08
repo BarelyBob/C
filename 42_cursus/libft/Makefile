@@ -15,8 +15,9 @@ SRCS	:=	ft_isascii.c	\
 		ft_isalpha.c	\
 		ft_putnbr.c	\
 		ft_isalnum.c	\
-		ft_strclr.c
-
+		ft_strclr.c	\
+		ft_bzero.c	\
+		ft_strlcpy.c
 
 SRCS_D	:=	srcs/
 
