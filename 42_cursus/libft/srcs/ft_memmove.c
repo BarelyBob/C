@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpitot <mpitot@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 13:59:51 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/08 16:11:00 by mpitot           ###   ########.fr       */
+/*   Created: 2023/11/08 16:20:37 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/08 16:24:54 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	write(fd, &c, 1);
+	size_t	i;
+
+	i = 0;
+	if (src < dest)
+	{
+		while (n-- > 0)
+		{
+			((unsigned char *) dest)[i] = ((unsigned char *) src)[n];
+			i++;
+		}
+	}
+	else
+		ft_memcpy(dest, src, n);
+	return (dest);
 }
