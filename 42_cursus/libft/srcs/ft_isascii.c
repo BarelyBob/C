@@ -1,38 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 13:35:07 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/07 17:45:41 by mpitot           ###   ########.fr       */
+/*   Created: 2023/11/07 17:08:34 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/07 17:09:40 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strjoin(const char *s1, const char *s2)
+int	ft_isascii(int c)
 {
-	unsigned int	i;
-	unsigned int	j;
-	char			*nstr;
-	size_t			size;
-
-	size = ft_strlen(s1) + ft_strlen(s2);
-	nstr = malloc(sizeof(char) * (size + 1));
-	i = 0;
-	while (s1[i])
-	{
-		nstr[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j])
-	{
-		nstr[i++] = s2[j];
-		i++;
-	}
-	nstr[i] = '\0';
-	return (nstr);
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }
