@@ -1,5 +1,6 @@
 SRCS	:=	ft_atoi.c	\
 ft_bzero.c		\
+ft_calloc.c		\
 ft_isalnum.c	\
 ft_isalpha.c	\
 ft_isascii.c	\
@@ -20,6 +21,7 @@ ft_putstr.c		\
 ft_putstr_fd.c	\
 ft_strchr.c		\
 ft_strclr.c		\
+ft_strdup.c		\
 ft_striter.c	\
 ft_strjoin.c	\
 ft_strlcat.c	\
