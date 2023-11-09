@@ -6,7 +6,7 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:09:34 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/09 16:53:16 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/09 22:43:08 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ size_t	ft_wordlen(const char *str, char c)
 	size_t	i;
 
 	i = 0;
-	while (str[i] != c)
+	while (str[i] && str[i] != c)
 		i++;
 	return (i);
 }
@@ -58,6 +58,7 @@ char	**ft_fill_tab(char const *s, char c, char **tab)
 {
 	size_t	i;
 	size_t	j;
+	size_t	len;
 
 	i = 0;
 	j = 0;
@@ -65,14 +66,15 @@ char	**ft_fill_tab(char const *s, char c, char **tab)
 	{
 		if (s[i] != c)
 		{
-			tab[j] = malloc(sizeof(char) * (ft_wordlen(&s[i], c)));
+			len = ft_wordlen(&s[i], c);
+			tab[j] = malloc(sizeof(char) * (len + 1));
 			if (!tab[j])
 			{
 				ft_free_tab(tab, i + 1);
 				return (NULL);
 			}
-			ft_strlcpy(tab[j], s, ft_wordlen(&s[i], c));
-			i += ft_wordlen(&s[i], c);
+			ft_strlcpy(tab[j], &s[i], len + 1);
+			i += len;
 			j++;
 		}
 		else

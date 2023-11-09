@@ -51,7 +51,7 @@ NAME	:=	libft.a
 
 all	:	$(NAME)
 
-$(NAME)	:	$(OBJS_D) $(OBJS) #Makefile #retirer pour push
+$(NAME)	:	$(OBJS_D) $(OBJS) Makefile #retirer pour push
 	$(AR) $(CLFAGS) -o $(NAME) $(OBJS)
 
 $(OBJS)	:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD_D)$(HEAD)
@@ -59,6 +59,7 @@ $(OBJS)	:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD_D)$(HEAD)
 
 $(OBJS_D):
 	@mkdir -p $(OBJS_D)
+
 clean	:
 	$(RM) -r $(OBJ) $(OBJS_D)
 

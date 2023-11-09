@@ -6,7 +6,7 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:01:20 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/09 17:43:13 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/09 21:58:20 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	j;
 	size_t	lsize;
 
-	if (!big || !little)
+	if (!big)
 		return (NULL);
+	if (!little || !little[0])
+		return ((char *) big);
 	i = 0;
 	lsize = ft_strlen(little);
 	while (big[i] && i < len)
