@@ -6,7 +6,7 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:01:59 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/08 17:30:10 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/09 17:57:27 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	j;
+	size_t	sz;
 
 	i = 0;
 	j = ft_strlen(dst);
@@ -25,5 +26,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		i++;
 	}
 	dst[i + j] = '\0';
-	return (j + size);
+	sz = ft_strlen(src);
+	return (j + sz);
 }
