@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpitot <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 16:39:28 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/08 20:02:00 by mpitot           ###   ########.fr       */
+/*   Created: 2023/11/08 20:03:01 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/08 20:08:15 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char *ft_substr(char const *s, unsigned int start, size_t len)
 {
+	char	*new;
 	size_t	i;
 
-	i = 0;
-	while (i < n)
+	if (!s || len == 0)
+		return (NULL);
+	new = malloc(sizeof(char) * (len + 1));
+	if (!new)
+		return (NULL);
+	i = start;
+	while (i < len && s[i])
 	{
-			if (((unsigned char *) s)[i] == ((unsigned char) c))
-				return (((void *) s) + i);
-			i++;
+		new[i] = s[start];
+		i++;
+		start++;
 	}
-	return (NULL);
+	return (new);
 }
