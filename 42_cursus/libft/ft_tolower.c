@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 16:29:34 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/08 17:30:06 by mpitot           ###   ########.fr       */
+/*   Created: 2023/11/07 17:37:53 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/09 16:15:53 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strchr(const char *s, int c)
+int	ft_tolower(int c)
 {
-	size_t	i;
-
-	i = 0;
-	while(s[i])
-	{
-		if (s[i] == c)
-			return (&((char *) s)[i]);
-	}
-	return (NULL);
+	if (c >= 65 && c <= 90)
+		c += 32;
+	return (c);
 }

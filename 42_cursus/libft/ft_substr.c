@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 17:28:33 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/08 17:29:23 by mpitot           ###   ########.fr       */
+/*   Created: 2023/11/08 20:03:01 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/09 16:18:06 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(const char *s, int fd)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+	char	*new;
+	size_t	i;
+
+	if (!s || len == 0)
+		return (NULL);
+	new = malloc(sizeof(char) * (len + 1));
+	if (!new)
+		return (NULL);
+	i = start;
+	while (i < len && s[i])
+	{
+		new[i] = s[start];
+		i++;
+		start++;
+	}
+	return (new);
 }

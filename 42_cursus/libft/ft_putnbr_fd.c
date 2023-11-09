@@ -1,46 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 09:53:24 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/09 09:53:51 by mpitot           ###   ########.fr       */
+/*   Created: 2023/11/08 14:03:46 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/08 17:30:04 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int 	ft_contains(const char *str, char c)
+void	ft_putnbr_fd_unsigned(unsigned int n, int fd)
 {
-	size_t	i;
-
-	i = 0;
-	while (str[i])
+	if (n < 10)
+		ft_putchar_fd(n + 48, fd);
+	else
 	{
-		if (str[i] == c)
-			return (1);
-		i++;
+		ft_putnbr_fd_unsigned(n / 10, fd);
+		ft_putchar_fd(n % 10, fd);
 	}
-	return (0);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
-	size_t	size;
-	char	*new;
-
-	i = 0;
-	size = ft_strlen(s1);
-	while (ft_contains(set, s1[i]))
-		i++;
-	size -= i;
-	while (ft_contains(set, s1[size - 1]))
-		size--;
-	new = ft_substr(s1, i, size);
-	if (!new)
-		return (NULL);
-	return (new);
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		ft_putnbr_fd_unsigned(n * -1, fd);
+	}
+	else
+		ft_putnbr_fd_unsigned(n, fd);
 }

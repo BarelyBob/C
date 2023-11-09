@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 17:42:36 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/08 18:01:13 by mpitot           ###   ########.fr       */
+/*   Created: 2023/11/08 16:20:37 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/08 17:29:58 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*calloc(size_t nmemb, size_t size)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	void	*ptr;
+	size_t	i;
 
-	if (nmemb == 0 || size == 0)
-		return (NULL);
-	ptr = malloc(size * nmemb);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, nmemb);
-	return (ptr);
+	i = 0;
+	if (src < dest)
+	{
+		while (n-- > 0)
+		{
+			((unsigned char *) dest)[i] = ((unsigned char *) src)[n];
+			i++;
+		}
+	}
+	else
+		ft_memcpy(dest, src, n);
+	return (dest);
 }

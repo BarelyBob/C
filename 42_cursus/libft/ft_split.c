@@ -6,7 +6,7 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:09:34 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/09 14:17:30 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/09 16:53:16 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,27 +54,35 @@ size_t	ft_wordlen(const char *str, char c)
 	return (i);
 }
 
-char	*ft_strndup(const char *src, size_t	n)
+char	**ft_fill_tab(char const *s, char c, char **tab)
 {
 	size_t	i;
-	char	*dst;
+	size_t	j;
 
 	i = 0;
-	dst = malloc(sizeof(char) * (n + 1));
-	if (!dst)
-		return (NULL);
-	while (i < n)
+	j = 0;
+	while (s[i])
 	{
-		dst[i] = src[i];
-		i++;
+		if (s[i] != c)
+		{
+			tab[j] = malloc(sizeof(char) * (ft_wordlen(&s[i], c)));
+			if (!tab[j])
+			{
+				ft_free_tab(tab, i + 1);
+				return (NULL);
+			}
+			ft_strlcpy(tab[j], s, ft_wordlen(&s[i], c));
+			i += ft_wordlen(&s[i], c);
+			j++;
+		}
+		else
+			i++;
 	}
-	dst[i] = 0;
-	return (dst);
+	return (tab);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	j;
 	size_t	size;
 	char	**tab;
 
@@ -82,23 +90,9 @@ char	**ft_split(char const *s, char c)
 	tab = malloc(sizeof(char *) * (size + 1));
 	if (!tab)
 		return (NULL);
-	size = 0;
-	j = 0;
-	while (s[size])
-	{
-		tab[j] = ft_strndup(s, ft_wordlen(&s[size], c));
-		if (!tab[j])
-		{
-			ft_free_tab(tab, size + 1);
-			return (NULL);
-		}
-		size += ft_wordlen(&s[size], c);
-		if (tab[j][0] != 0)
-			j++;
-		else
-			free(tab[j]);
-		size++;
-	}
+	tab = ft_fill_tab(s, c, tab);
+	if (!tab)
+		return (NULL);
 	tab[size] = NULL;
 	return (tab);
 }

@@ -6,7 +6,7 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:33:08 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/09 15:26:54 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/09 16:20:39 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_getsize(int n)
 {
-	size_t 	count;
+	size_t	count;
 
 	count = 1;
 	while (n > 9)
@@ -51,8 +51,7 @@ char	*ft_fill(int n, size_t len, int sign)
 
 char	*ft_itoa(int n)
 {
-	int		value;
-	int 	sign;
+	int		sign;
 	size_t	len;
 	char	*str;
 

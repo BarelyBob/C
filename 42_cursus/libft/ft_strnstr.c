@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 10:40:01 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/08 17:29:46 by mpitot           ###   ########.fr       */
+/*   Created: 2023/11/08 17:01:20 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/09 16:18:06 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
+	size_t	j;
+	size_t	lsize;
 
+	if (!big || !little)
+		return (NULL);
 	i = 0;
-	while (((unsigned char *) s)[i] && i < n)
+	lsize = ft_strlen(little);
+	while (big[i] && i < len)
 	{
-		((unsigned char *) s)[i] = 0;
+		j = 0;
+		while (big[i + j] == little[j])
+		{
+			if (j == lsize)
+				return (&((char *) big)[i]);
+			j++;
+		}
 		i++;
 	}
+	return (NULL);
 }

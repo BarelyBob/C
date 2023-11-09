@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 20:03:01 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/08 20:08:15 by mpitot           ###   ########.fr       */
+/*   Created: 2023/11/08 17:21:50 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/08 17:32:26 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strdup(const char *s)
 {
-	char	*new;
 	size_t	i;
+	char	*new;
 
-	if (!s || len == 0)
+	if (!s)
 		return (NULL);
-	new = malloc(sizeof(char) * (len + 1));
-	if (!new)
-		return (NULL);
-	i = start;
-	while (i < len && s[i])
+	new = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	i = 0;
+	while (s[i])
 	{
-		new[i] = s[start];
+		new[i] = s[i];
 		i++;
-		start++;
 	}
 	return (new);
 }

@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 14:03:46 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/08 17:30:04 by mpitot           ###   ########.fr       */
+/*   Created: 2023/11/08 13:01:59 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/08 17:30:10 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd_unsigned(unsigned int n, int fd)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	if (n < 10)
-		ft_putchar_fd(n + 48, fd);
-	else
-	{
-		ft_putnbr_fd_unsigned(n / 10, fd);
-		ft_putchar_fd(n % 10, fd);
-	}
-}
+	size_t	i;
+	size_t	j;
 
-void	ft_putnbr_fd(int n, int fd)
-{
-	if (n < 0)
+	i = 0;
+	j = ft_strlen(dst);
+	while (src[i] && i < size - 1)
 	{
-		ft_putchar_fd('-', fd);
-		ft_putnbr_fd_unsigned(n * -1, fd);
+		dst[i + j] = src[i];
+		i++;
 	}
-	else
-		ft_putnbr_fd_unsigned(n, fd);
+	dst[i + j] = '\0';
+	return (j + size);
 }

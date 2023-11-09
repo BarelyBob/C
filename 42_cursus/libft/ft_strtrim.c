@@ -1,27 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 16:55:45 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/08 17:29:57 by mpitot           ###   ########.fr       */
+/*   Created: 2023/11/09 09:53:24 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/09 16:21:32 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_contains(const char *str, char c)
 {
 	size_t	i;
 
 	i = 0;
-	while ((((unsigned char *) s1)[i] || ((unsigned char *) s2)[i]) && i < n)
+	while (str[i])
 	{
-		if (((unsigned char *) s1)[i] != ((unsigned char *) s2)[i])
-			return (((unsigned char *) s1)[i] - ((unsigned char *) s2)[i]);
+		if (str[i] == c)
+			return (1);
 		i++;
 	}
 	return (0);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	size_t	i;
+	size_t	size;
+	char	*new;
+
+	i = 0;
+	size = ft_strlen(s1);
+	while (ft_contains(set, s1[i]))
+		i++;
+	size -= i;
+	while (ft_contains(set, s1[size - 1]))
+		size--;
+	new = ft_substr(s1, i, size);
+	if (!new)
+		return (NULL);
+	return (new);
 }
