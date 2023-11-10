@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 14:03:46 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/08 17:30:04 by mpitot           ###   ########.fr       */
+/*   Created: 2023/11/10 12:58:37 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/10 12:59:24 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd_unsigned(unsigned int n, int fd)
+t_list *ft_lstnew(void *content)
 {
-	if (n < 10)
-		ft_putchar_fd(n + 48, fd);
-	else
-	{
-		ft_putnbr_fd_unsigned(n / 10, fd);
-		ft_putchar_fd(n % 10 + 48, fd);
-	}
-}
+	t_list	new;
 
-void	ft_putnbr_fd(int n, int fd)
-{
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		ft_putnbr_fd_unsigned(n * -1, fd);
-	}
-	else
-		ft_putnbr_fd_unsigned(n, fd);
+	new.content = content;
+	new.next = NULL;
+	return (&new);
 }

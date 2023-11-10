@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 14:03:46 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/08 17:30:04 by mpitot           ###   ########.fr       */
+/*   Created: 2023/11/10 13:06:05 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/10 13:06:06 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd_unsigned(unsigned int n, int fd)
+int ft_lstsize(t_list *lst)
 {
-	if (n < 10)
-		ft_putchar_fd(n + 48, fd);
-	else
-	{
-		ft_putnbr_fd_unsigned(n / 10, fd);
-		ft_putchar_fd(n % 10 + 48, fd);
-	}
-}
+	int i;
+	t_list	temp;
 
-void	ft_putnbr_fd(int n, int fd)
-{
-	if (n < 0)
+	if (!lst)
+		return (0);
+	i = 1;
+	temp = *lst;
+	while (temp.next)
 	{
-		ft_putchar_fd('-', fd);
-		ft_putnbr_fd_unsigned(n * -1, fd);
+		temp = *temp.next;
+		i++;
 	}
-	else
-		ft_putnbr_fd_unsigned(n, fd);
+	return (i);
 }
