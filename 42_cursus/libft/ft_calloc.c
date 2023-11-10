@@ -6,13 +6,13 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:42:36 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/08 18:01:13 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/10 13:48:12 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
 
@@ -21,6 +21,6 @@ void	*calloc(size_t nmemb, size_t size)
 	ptr = malloc(size * nmemb);
 	if (!ptr)
 		return (NULL);
-	ft_bzero(ptr, nmemb);
+	ft_bzero(ptr, nmemb * size);
 	return (ptr);
 }

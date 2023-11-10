@@ -6,7 +6,7 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:27:53 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/09 17:08:45 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/10 14:12:09 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 
 typedef struct s_list
 {
-	void *content;
-	struct s_list *next;
-} t_list;
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 int		ft_atoi(const char *nptr);
 int		ft_isalnum(int c);

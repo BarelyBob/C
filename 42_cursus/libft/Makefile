@@ -45,11 +45,11 @@ HEAD_D	:=	./
 
 CFLAGS	:=	-Wall -Wextra -Werror -g3 #-fsanitize=address
 
-AR	:=	ar rcs #verifier si s autorise
+AR		:=	ar rcs #verifier si s autorise
 
 NAME	:=	libft.a
 
-all	:	$(NAME)
+all		:	$(NAME)
 
 $(NAME)	:	$(OBJS_D) $(OBJS) Makefile #retirer pour push
 	$(AR) $(CLFAGS) -o $(NAME) $(OBJS)
@@ -66,6 +66,6 @@ clean	:
 fclean	:	clean
 	$(RM) $(NAME)
 
-re	:	fclean all
+re		:	fclean all
 
 .PHONY: all clean fclean re

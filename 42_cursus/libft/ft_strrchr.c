@@ -23,9 +23,11 @@ char	*ft_strrchr(const char *s, int c)
 	last = NULL;
 	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] == (unsigned char) c)
 			last = &((char *) s)[i];
 		i++;
 	}
+	if ((unsigned char) c == 0)
+		last = &((char *) s)[i];
 	return (last);
 }

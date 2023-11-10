@@ -6,7 +6,7 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:21:50 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/08 17:32:26 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/10 13:54:40 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ char	*ft_strdup(const char *s)
 	if (!s)
 		return (NULL);
 	new = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!new)
+		return (NULL);
 	i = 0;
 	while (s[i])
 	{
 		new[i] = s[i];
 		i++;
 	}
+	new[i] = '\0';
 	return (new);
 }

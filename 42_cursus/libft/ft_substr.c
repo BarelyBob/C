@@ -6,28 +6,47 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 20:03:01 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/09 16:18:06 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/10 16:42:28 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+char	*ft_error(void)
+{
+	char	*str;
+
+	str = malloc(sizeof(char));
+	if (!str)
+		return (NULL);
+	str[0] = '\0';
+	return (str);
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*new;
 	size_t	i;
+	size_t	size;
 
-	if (!s || len == 0)
-		return (NULL);
-	new = malloc(sizeof(char) * (len + 1));
+	if (!s)
+		return (ft_error());
+	size = ft_strlen(s);
+	if (start > size)
+		return (ft_error());
+	if (start + len > size + 1)
+		new = malloc(sizeof(char) * ((size - start) + 1));
+	else
+		new = malloc(sizeof(char) * (len + 1));
 	if (!new)
 		return (NULL);
-	i = start;
-	while (i < len && s[i])
+	i = 0;
+	while (i < len && s[start])
 	{
 		new[i] = s[start];
 		i++;
 		start++;
 	}
+	new[i] = '\0';
 	return (new);
 }

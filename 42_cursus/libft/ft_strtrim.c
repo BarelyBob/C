@@ -6,7 +6,7 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 09:53:24 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/09 16:21:32 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/10 18:13:44 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,17 @@ int	ft_contains(const char *str, char c)
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
+	size_t	j;
 	size_t	size;
 	char	*new;
 
 	i = 0;
-	size = ft_strlen(s1);
+	j = ft_strlen(s1) - 1;
 	while (ft_contains(set, s1[i]))
 		i++;
-	size -= i;
-	while (ft_contains(set, s1[size - 1]))
-		size--;
+	while (j > i && ft_contains(set, s1[j]))
+		j--;
+	size = j - i + 1;
 	new = ft_substr(s1, i, size);
 	if (!new)
 		return (NULL);

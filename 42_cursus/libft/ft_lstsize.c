@@ -6,15 +6,15 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:06:05 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/10 13:06:06 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/10 14:10:50 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-	int i;
+	int		i;
 	t_list	temp;
 
 	if (!lst)
