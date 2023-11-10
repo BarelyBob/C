@@ -6,11 +6,42 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:33:08 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/09 16:20:39 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/10 12:02:30 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+char	*ft_revstr(char *str)
+{
+	size_t	i;
+	size_t	j;
+	char	temp;
+
+	i = 0;
+	j = ft_strlen(str) - 1;
+	while (i < j)
+	{
+		temp = str[i];
+		str[i] = str[j];
+		str[j] = temp;
+		i++;
+		j--;
+	}
+	return (str);
+}
 
 size_t	ft_getsize(int n)
 {
@@ -31,20 +62,19 @@ char	*ft_fill(int n, size_t len, int sign)
 	char	*str;
 
 	str = malloc(sizeof(char) * (len + 1));
-	ft_memset(str, 0, len + 1);
 	if (!str)
 		return (NULL);
 	stop = 0;
-	if (sign == -1)
-	{
-		str[0] = '-';
-		stop++;
-	}
 	while (len > stop)
 	{
-		str[len] = n % 10;
+		str[stop] = ((n % 10) + 48);
 		n = n / 10;
-		len--;
+		stop++;
+	}
+	if (sign == -1)
+	{
+		str[stop] = '-';
+		stop++;
 	}
 	return (str);
 }
@@ -66,5 +96,14 @@ char	*ft_itoa(int n)
 	str = ft_fill(n, len, sign);
 	if (!str)
 		return (NULL);
+	str = ft_revstr(str);
 	return (str);
+}
+
+#include <stdio.h>
+int main(int argc, char **argv)
+{
+	(void) argc;
+	printf("%s", ft_itoa(atoi(argv[1])));
+	return (0);
 }
