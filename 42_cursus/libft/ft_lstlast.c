@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 12:58:37 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/11 18:46:50 by mpitot           ###   ########.fr       */
+/*   Created: 2023/11/11 12:41:01 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/11 12:41:01 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*node;
+	int		i;
+	t_list	*temp;
 
-	node = malloc(sizeof(t_list));
-	node->content = content;
-	node->next = 0;
-	return (node);
+	if (!lst)
+		return (0);
+	i = 1;
+	temp = lst;
+	while (temp->next)
+	{
+		temp = temp->next;
+		i++;
+	}
+	return (temp);
 }

@@ -6,7 +6,7 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:33:08 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/10 18:48:17 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/11 18:07:38 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ char	*ft_itoa_unsigned(unsigned int n, int fd, char *str)
 	else
 	{
 		str = ft_itoa_unsigned(n / 10, fd, str);
-		str = n % 10 + 48;
+		str[0] = n % 10 + 48;
 	}
+	return (str);
 }
 
 char	*ft_itoa(int n)

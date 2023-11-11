@@ -1,71 +1,74 @@
-SRCS	:=	ft_atoi.c	\
-ft_bzero.c		\
-ft_calloc.c		\
-ft_isalnum.c	\
-ft_isalpha.c	\
-ft_isascii.c	\
+SRCS	=	ft_isalpha.c	\
 ft_isdigit.c	\
+ft_isalnum.c	\
+ft_isascii.c	\
 ft_isprint.c	\
-ft_itoa.c		\
-ft_memchr.c		\
-ft_memcmp.c 	\
+ft_strlen.c		\
+ft_memset.c		\
+ft_bzero.c		\
 ft_memcpy.c		\
 ft_memmove.c	\
-ft_memset.c		\
-ft_putchar_fd.c	\
-ft_putendl_fd.c	\
-ft_putnbr_fd.c	\
-ft_putstr_fd.c	\
-ft_split.c		\
-ft_strchr.c		\
-ft_strdup.c		\
-ft_striteri.c	\
-ft_strjoin.c	\
-ft_strlcat.c	\
 ft_strlcpy.c	\
-ft_strlen.c		\
-ft_strmapi.c	\
-ft_strncmp.c	\
-ft_strnstr.c	\
-ft_strrchr.c	\
-ft_strtrim.c	\
-ft_substr.c		\
+ft_strlcat.c	\
+ft_toupper.c	\
 ft_tolower.c	\
-ft_toupper.c
+ft_strchr.c		\
+ft_strrchr.c	\
+ft_strncmp.c	\
+ft_memchr.c		\
+ft_memcmp.c		\
+ft_strnstr.c	\
+ft_atoi.c		\
+ft_calloc.c		\
+ft_strdup.c		\
+ft_substr.c		\
+ft_strjoin.c	\
+ft_strtrim.c	\
+ft_split.c		\
+ft_itoa.c		\
+ft_strmapi.c	\
+ft_striteri.c	\
+ft_putchar_fd.c	\
+ft_putstr_fd.c	\
+ft_putendl_fd.c	\
+ft_putnbr_fd.c
 
-SRCS_D	:=	./
+B_SRCS	=	ft_lstnew.c		\
+ft_lstadd_front.c	\
+ft_lstsize.c		\
+ft_lstlast.c		\
+ft_lstadd_back.c	\
+ft_lstclear.c		\
 
-OBJS_D	:=	objs/
+OBJS	=	${SRCS:.c=.o}
 
-OBJS	:=	$(SRCS:%.c=$(OBJS_D)%.o)
+B_OBJS	=	${B_SRCS:.c=.o}
 
-HEAD	:=	libft.h
+HEADER	=	libft.h
 
-HEAD_D	:=	./
+NAME	=	libft.a
 
-CFLAGS	:=	-Wall -Wextra -Werror -g3 #-fsanitize=address
+CC		=	cc
 
-AR		:=	ar rcs #verifier si s autorise
+FLAGS	=	-Wall -Wextra -Werror
 
-NAME	:=	libft.a
+all		:	${NAME}
 
-all		:	$(NAME)
+%.o:%.c		${HEADER}
+	${CC} ${FLAGS} -c $< -o $@
 
-$(NAME)	:	$(OBJS_D) $(OBJS) Makefile #retirer pour push
-	$(AR) $(CLFAGS) -o $(NAME) $(OBJS)
-
-$(OBJS)	:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD_D)$(HEAD)
-	$(CC) $(CFLAGS) -I$(HEAD_D) -c $< -o $@
-
-$(OBJS_D):
-	@mkdir -p $(OBJS_D)
+${NAME}	:	${OBJS} Makefile
+	ar -rc ${NAME} ${OBJS}
 
 clean	:
-	$(RM) -r $(OBJ) $(OBJS_D)
+	rm -f ${OBJS} ${B_OBJS}
 
 fclean	:	clean
-	$(RM) $(NAME)
+	rm -f ${NAME}
 
 re		:	fclean all
 
-.PHONY: all clean fclean re
+bonus	:	${OBJS} ${B_OBJS} Makefile
+	ar -rc ${NAME} ${OBJS} ${B_OBJS}
+
+.PHONY	:	all clean fclean re bonus
