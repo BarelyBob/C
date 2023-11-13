@@ -37,7 +37,10 @@ B_SRCS	=	ft_lstnew.c		\
 ft_lstadd_front.c	\
 ft_lstsize.c		\
 ft_lstlast.c		\
-ft_lstadd_back.c
+ft_lstadd_back.c	\
+ft_lstdelone.c		\
+ft_lstclear.c		\
+ft_lstiter.c
 
 OBJS	=	${SRCS:.c=.o}
 
@@ -49,15 +52,20 @@ NAME	=	libft.a
 
 CC		=	cc
 
+AR		=	ar -rc
+
 FLAGS	=	-Wall -Wextra -Werror
 
 all		:	${NAME}
 
-%.o:%.c		${HEADER}
+%.o		:	%.c ${HEADER}
 	${CC} ${FLAGS} -c $< -o $@
 
 ${NAME}	:	${OBJS} Makefile
-	ar -rc ${NAME} ${OBJS}
+	${AR} ${NAME} ${OBJS}
+
+bonus	:	${OBJS} ${B_OBJS} Makefile
+	${AR} ${NAME} ${OBJS} ${B_OBJS}
 
 clean	:
 	rm -f ${OBJS} ${B_OBJS}
@@ -66,8 +74,5 @@ fclean	:	clean
 	rm -f ${NAME}
 
 re		:	fclean all
-
-bonus	:	${OBJS} ${B_OBJS} Makefile
-	ar -rc ${NAME} ${OBJS} ${B_OBJS}
 
 .PHONY	:	all clean fclean re bonus

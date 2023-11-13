@@ -6,7 +6,7 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 20:03:01 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/10 16:42:28 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/13 16:28:22 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size = ft_strlen(s);
 	if (start > size)
 		return (ft_error());
-	if (start + len > size + 1)
-		new = malloc(sizeof(char) * ((size - start) + 1));
+	if (start + len >= size)
+		new = malloc(sizeof(char) * (size - start + 1));
 	else
 		new = malloc(sizeof(char) * (len + 1));
 	if (!new)

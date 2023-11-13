@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 17:21:50 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/10 13:54:40 by mpitot           ###   ########.fr       */
+/*   Created: 2023/11/13 16:54:25 by mpitot            #+#    #+#             */
+/*   Updated: 2023/11/13 16:58:46 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	size_t	i;
-	char	*new;
+	t_list	*temp;
 
-	new = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (!new)
-		return (NULL);
-	i = 0;
-	while (s[i])
+	if (!lst)
+		return ;
+	temp = lst;
+	while (temp)
 	{
-		new[i] = s[i];
-		i++;
+		(*f)(temp->content);
+		temp = temp->next;
 	}
-	new[i] = '\0';
-	return (new);
 }

@@ -6,18 +6,18 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:09:34 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/09 22:43:08 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/13 16:23:26 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_tab(char **tab, size_t size)
+void	ft_free_tab(char **tab)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < size)
+	while (tab[i])
 	{
 		free(tab[i]);
 		i++;
@@ -70,7 +70,7 @@ char	**ft_fill_tab(char const *s, char c, char **tab)
 			tab[j] = malloc(sizeof(char) * (len + 1));
 			if (!tab[j])
 			{
-				ft_free_tab(tab, i + 1);
+				ft_free_tab(tab);
 				return (NULL);
 			}
 			ft_strlcpy(tab[j], &s[i], len + 1);
