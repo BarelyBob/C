@@ -6,17 +6,17 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:33:08 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/11 18:07:38 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/13 11:36:41 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_count(int n)
+size_t	ft_count(unsigned int n)
 {
 	size_t	i;
 
-	i = 0;
+	i = 1;
 	while (n > 9)
 	{
 		n = n / 10;
@@ -25,35 +25,57 @@ size_t	ft_count(int n)
 	return (i);
 }
 
-char	*ft_itoa_unsigned(unsigned int n, int fd, char *str)
+void	ft_revstr(char *str, size_t j)
 {
-	if (n < 10)
-		str[0] = n + 48;
-	else
+	size_t	i;
+	char	temp;
+
+	i = 0;
+	while (i < j)
 	{
-		str = ft_itoa_unsigned(n / 10, fd, str);
-		str[0] = n % 10 + 48;
+		temp = str[i];
+		str[i] = str[j];
+		str[j] = temp;
+		i++;
+		j--;
 	}
-	return (str);
+}
+
+void	ft_fill(char *str, unsigned int n, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		str[i] = (n % 10 + 48);
+		n /= 10;
+		i++;
+	}
+	ft_revstr(str, len - 1);
 }
 
 char	*ft_itoa(int n)
 {
 	char	*str;
+	size_t	size;
 
-	str = malloc(sizeof(char) * (ft_count(n) + 1));
-	if (!str)
-		return (NULL);
 	if (n < 0)
-		str = ft_itoa_unsigned(n * -1, -1, str);
+	{
+		size = ft_count(n * -1);
+		str = ft_calloc((size + 2), sizeof(char));
+		if (!str)
+			return (NULL);
+		str[0] = '-';
+		ft_fill(&str[1], n * -1, size);
+	}
 	else
-		str = ft_itoa_unsigned(n, 1, str);
+	{
+		size = ft_count(n);
+		str = ft_calloc((size + 1), sizeof(char));
+		if (!str)
+			return (NULL);
+		ft_fill(str, n, size);
+	}
 	return (str);
-}
-
-#include <stdio.h>
-int	main(int argc, char **argv)
-{
-	(void) argc;
-	printf("%s", ft_itoa(atoi(argv[1])));
 }
