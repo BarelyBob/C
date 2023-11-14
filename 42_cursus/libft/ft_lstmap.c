@@ -6,7 +6,7 @@
 /*   By: mpitot <mpitot@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:01:36 by mpitot            #+#    #+#             */
-/*   Updated: 2023/11/13 17:30:53 by mpitot           ###   ########.fr       */
+/*   Updated: 2023/11/14 11:18:56 by mpitot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	while (lst)
 	{
 		temp = ft_lstnew((*f)(lst->content));
-		if (temp == 0)
+		if (temp == NULL)
 		{
+			(*del)(temp);
 			ft_lstclear(&new, del);
 			return (NULL);
 		}
