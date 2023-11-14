@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t	ft_count(unsigned int n)
+static size_t	ft_count(unsigned int n)
 {
 	size_t	i;
 
@@ -25,7 +25,7 @@ size_t	ft_count(unsigned int n)
 	return (i);
 }
 
-void	ft_revstr(char *str, size_t j)
+static void	ft_revstr(char *str, size_t j)
 {
 	size_t	i;
 	char	temp;
@@ -41,7 +41,7 @@ void	ft_revstr(char *str, size_t j)
 	}
 }
 
-void	ft_fill(char *str, unsigned int n, size_t len)
+static void	ft_fill(char *str, unsigned int n, size_t len)
 {
 	size_t	i;
 

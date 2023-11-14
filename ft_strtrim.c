@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_contains(const char *str, char c)
+static int	ft_contains(const char *str, char c)
 {
 	size_t	i;
 

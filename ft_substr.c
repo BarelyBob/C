@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_error(void)
+static char	*ft_error(void)
 {
 	char	*str;
 
